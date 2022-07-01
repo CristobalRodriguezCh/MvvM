@@ -8,7 +8,7 @@ import retrofit2.Response
 
 class QuoteService {
     //todas las llamadas se hacend esde aqui
-    private val retrofit = RetrofitHelper.getRetrofit()
+    private val retrofit = RetrofitHelper.getRetrofit()//instancia
 
     suspend fun getQuotes():List<QuoteModel>{
         //coorutinas dado que hay que dejar por fuera la ejecucion del hilo principal

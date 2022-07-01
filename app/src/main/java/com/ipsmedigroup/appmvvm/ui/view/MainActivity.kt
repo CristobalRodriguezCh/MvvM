@@ -3,6 +3,7 @@ package com.ipsmedigroup.appmvvm.ui.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.ipsmedigroup.appmvvm.R
 import com.ipsmedigroup.appmvvm.databinding.ActivityMainBinding
 import com.ipsmedigroup.appmvvm.ui.viewModel.QuoteViewModel
@@ -26,6 +27,12 @@ class MainActivity : AppCompatActivity() {
             binding.tvQuote.text = it.quote
             binding.tvAuthor.text = it.author
             // cada que exista un cambio en livedata se refleja en este apartado
+        }
+
+        quoteViewModel.isLoading.observe(this){
+            binding.ProgresBar.isVisible = it
+            binding.tvQuote.isVisible = !it
+            binding.tvAuthor.isVisible = !it
         }
 
        binding.viewContainer.setOnClickListener{ quoteViewModel.quoteGet()}
